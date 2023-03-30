@@ -22,7 +22,7 @@ function Pet({ pet, onAdoptPet }) {
         </div>
       </div>
       <div className="extra content">
-        {isAdopted? <button className="ui disabled button">Already adopted</button> : 
+        {pet.isAdopted? <button className="ui disabled button">Already adopted</button> : 
         <button className="ui primary button" onClick={handleAdopt}>Adopt pet</button>
         }
         
