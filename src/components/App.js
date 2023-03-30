@@ -9,24 +9,23 @@ function App() {
 
   function handleNewType(type) {
     setFilters({type: type})
-    console.log(filters.type)
+    
   }
   function handleFindPetsClick() {
-    if (filters.type === "all") {
-      fetch("http://localhost:3001/pets")
-      .then(r=>r.json())
-      .then(pets=>setPets(pets))
-    } else {
-      fetch(`http://localhost:3001/pets?type=${filters.type}`)
-      .then(r=>r.json())
-      .then(pets=>setPets(pets))
+    let url = `http://localhost:3001/pets`
+    if (filters.type !== "all") {
+      url += `?type=${filters.type}`
     }
+    fetch(url)
+    .then(r=>r.json())
+    .then(pets=>setPets(pets))
     
   }
   function handleAdoption(id) {
     setPets(pets.map(pet => {
       return (pet.id === id? {...pet, isAdopted: true}: pet )
     }))
+
   }
   return (
     <div className="ui container">
