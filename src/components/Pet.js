@@ -1,9 +1,9 @@
-import React, {useState} from "react";
+import React from "react";
 
 function Pet({ pet, onAdoptPet }) {
-  const [isAdopted, setIsAdopted] = useState(false)
+  
   function handleAdopt() {
-    setIsAdopted(!isAdopted)
+    
     onAdoptPet(pet.id)
   }
   return (

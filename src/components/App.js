@@ -6,7 +6,7 @@ import PetBrowser from "./PetBrowser";
 function App() {
   const [pets, setPets] = useState([]);
   const [filters, setFilters] = useState({ type: "all" });
-  
+
   function handleNewType(type) {
     setFilters({type: type})
     console.log(filters.type)
@@ -24,7 +24,9 @@ function App() {
     
   }
   function handleAdoption(id) {
-    console.log("yay! I'm adopted!")
+    setPets(pets.map(pet => {
+      return (pet.id === id? {...pet, isAdopted: true}: pet )
+    }))
   }
   return (
     <div className="ui container">
